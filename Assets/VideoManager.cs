@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 public class VideoManager : MonoBehaviour
 {
 	public VideoPlayer video;
+	public RawImage rawImage;
 	public Slider slider;
 	public Sprite playImage;
 	public Sprite pauseImage;
@@ -83,6 +84,7 @@ public class VideoManager : MonoBehaviour
 
 	void loopPointReached(VideoPlayer v)
 	{
+		PlayPauseButton.sprite = playImage;
 		Debug.Log("video player loop point reached");
 		isDone = true;
 	}
@@ -117,7 +119,6 @@ public class VideoManager : MonoBehaviour
 
 		video.url = temp;
 		video.Prepare();
-
 		Debug.Log("can set direct audio volume: " + video.canSetDirectAudioVolume);
 		Debug.Log("can set playback speed: " + video.canSetPlaybackSpeed);
 		Debug.Log("can set skip on drop: " + video.canSetSkipOnDrop);
@@ -126,6 +127,7 @@ public class VideoManager : MonoBehaviour
 	}
 	public void PlayPause()
 	{
+
 		if (!IsPrepared) return;
 		if (IsPlaying)
 		{

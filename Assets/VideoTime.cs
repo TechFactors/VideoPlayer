@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class VideoTime : MonoBehaviour
 {
 	public VideoManager video;
-	public Text time;
-	public Text duration;
+	public TextMeshProUGUI time;
 
 	int secondsPassed;
 	int minutesPassed;
@@ -22,8 +22,7 @@ public class VideoTime : MonoBehaviour
 			minutesPassed = (int)video.Time / 60;
 			secondsPassed = (int)video.Time - minutesPassed * 60;
 
-			time.text = string.Format("{0:00}:{1:00}", minutesPassed, secondsPassed);
-			duration.text = string.Format("{0:00}:{1:00}", totalMinutes, totalSeconds);
+			time.text = string.Format("{0:00}:{1:00}", minutesPassed, secondsPassed) + " / " + string.Format("{0:00}:{1:00}", totalMinutes, totalSeconds);
 		}
 	}
 }
